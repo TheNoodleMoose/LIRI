@@ -41,7 +41,10 @@ if (command == "spotify-this-song") {
         });
 } else if (command == "movie-this") {
     for (i = 3; i < arguments.length; i++) {
-        searchTerms += arguments[i] + " ";
+        searchTerms += arguments[i];
+    }
+    if(searchTerms != null) {
+        searchTerms = "Mr.Nobody"
     }
     axios.get("https://www.omdbapi.com/?t=" + searchTerms + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
@@ -49,11 +52,11 @@ if (command == "spotify-this-song") {
             console.log(`Title Of Movie: ${response.data.Title}`);
             console.log(`Year Released: ${response.data.Year}`);
             console.log(`imdb Rating: ${response.data.imdbRating}`);
+            console.log(`Rotten Tomoatoes Score: ${response.data.Ratings[1].Value}`);
             console.log(`Country Filmed In: ${response.data.Country}`);
             console.log(`Languages Of Film: ${response.data.Languages}`);
             console.log(`Plot Of Film: ${response.data.Plot}`);
             console.log(`Actors: ${response.data.Actors}`);
-            console.log(`Metascore: ${response.data.Metascore}`);
             console.log("======================");
         })
 
