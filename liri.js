@@ -164,8 +164,13 @@ if (command == "spotify-this-song") {
                     console.log("======================");
                 })
         }
+        else {
+            console.log("Command Not Found")
+        }
 
 
 
     })
+} else {
+    console.log("COMMAND NOT FOUND")
 }
