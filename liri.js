@@ -99,11 +99,24 @@ function runCommand(command, searchTerms) {
             if (error) {
                 return console.log(error);
             }
-            var dataArr = data.split(",");
+            
             // If the text in random.txt is spotify-this-song run spotify search
-            command = dataArr[0];
-            searchTerms = dataArr[1];
-            runCommand(command, searchTerms);
+            function grabCommand() {
+
+                let index = Math.floor(Math.random() * 6);
+            
+                if(index % 2 == 0) { 
+                    var dataArr = data.split(",");
+                    command = dataArr[index];
+                    searchTerms = dataArr[(index + 1)];
+                    runCommand(command, searchTerms);
+                } else {
+                    grabCommand();
+                }
+            }
+            grabCommand();
+            
+            
         })
     } else {
         console.log("COMMAND NOT FOUND")
